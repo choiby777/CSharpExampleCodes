@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformExamples.UsbCameraTest;
 
 namespace WinformExamples
 {
@@ -15,6 +16,12 @@ namespace WinformExamples
 		public MainForm()
 		{
 			InitializeComponent();
+		}
+
+		private void btnUsbCamera_Click(object sender, EventArgs e)
+		{
+			UsbCameraTestDlg dlg = new UsbCameraTestDlg();
+			dlg.ShowDialog();
 		}
 	}
 }
