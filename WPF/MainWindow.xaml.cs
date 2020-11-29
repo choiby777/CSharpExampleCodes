@@ -23,6 +23,14 @@ namespace Examples
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			btnPrinterTest.Click += BtnPrinterTest_Click;
+		}
+
+		private void BtnPrinterTest_Click(object sender, RoutedEventArgs e)
+		{
+			PrinterTest dlg = new PrinterTest();
+			dlg.ShowDialog();
 		}
 	}
 }
