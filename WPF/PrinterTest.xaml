@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Examples"
         mc:Ignorable="d"
-        Title="PrinterTest" Height="295.922" Width="453.204">
+        Title="PrinterTest" Height="703.422" Width="1039.204">
 	<Grid>
 		<Button x:Name="btnSelectFile" Content="Select" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" Width="75"/>
 		<TextBox x:Name="txtImageFilePath" HorizontalAlignment="Left" Height="20" Margin="102,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313"/>
-		<Image x:Name="imgPrintImage" HorizontalAlignment="Left" Height="189" Margin="17,66,0,0" VerticalAlignment="Top" Width="398"/>
+		<Image x:Name="imgPrintImage" HorizontalAlignment="Left" Height="596" Margin="17,66,0,0" VerticalAlignment="Top" Width="1004" Stretch="UniformToFill"/>
 		<Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="17,35,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button x:Name="btnPrintImageBox" Content="Print" HorizontalAlignment="Left" Margin="102,35,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button x:Name="btnPrintEx" Content="Print" HorizontalAlignment="Left" Margin="198,35,0,0" VerticalAlignment="Top" Width="75"/>
 
 	</Grid>
 </Window>
