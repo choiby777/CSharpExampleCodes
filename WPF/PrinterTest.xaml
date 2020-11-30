@@ -13,6 +13,7 @@
 		<Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="17,35,0,0" VerticalAlignment="Top" Width="75"/>
 		<Button x:Name="btnPrintImageBox" Content="Print" HorizontalAlignment="Left" Margin="102,35,0,0" VerticalAlignment="Top" Width="75"/>
 		<Button x:Name="btnPrintEx" Content="Print" HorizontalAlignment="Left" Margin="198,35,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button x:Name="btnPrintEx2" Content="Print" HorizontalAlignment="Left" Margin="298,35,0,0" VerticalAlignment="Top" Width="76"/>
 
 	</Grid>
 </Window>

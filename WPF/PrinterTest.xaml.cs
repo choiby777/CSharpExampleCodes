@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,79 @@ namespace Examples
 			btnPrint.Click += BtnPrint_Click;
 			btnPrintEx.Click += BtnPrintEx_Click;
 			btnPrintImageBox.Click += BtnPrintImageBox_Click;
+			btnPrintEx2.Click += BtnPrintEx2_Click;
+		}
+
+		private void BtnPrintEx2_Click(object sender, RoutedEventArgs e)
+		{
+			PrintAsFitonPaperSize(txtImageFilePath.Text);
+		}
+
+		public void PrintAsFitonPaperSize(string FileName, bool isAutoPaperOrientation = true)
+		{
+			try
+			{
+				if (string.IsNullOrWhiteSpace(FileName)) return; // Prevents execution of below statements if filename is not selected.
+
+				PrintDocument pd = new PrintDocument();
+				pd.DocumentName = "Xmaru";
+
+				//Disable the printing document pop-up dialog shown during printing.
+				PrintController printController = new StandardPrintController();
+				pd.PrintController = printController;
+
+				if (!pd.PrinterSettings.IsValid) throw new Exception("PrinterSetting is not valid");
+				if (!pd.PrinterSettings.IsDefaultPrinter) throw new Exception("Default printer is not valid");
+
+				//For testing only: Hardcoded set paper size to particular paper.
+				//pd.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom 6x4", 720, 478);
+				//pd.DefaultPageSettings.PaperSize = new PaperSize("Custom 6x4", 720, 478);
+
+				pd.DefaultPageSettings.Margins = new Margins(10, 10, 10, 10);
+				pd.PrinterSettings.DefaultPageSettings.Margins = new Margins(10, 10, 10, 10);
+
+				System.Drawing.Image image = System.Drawing.Image.FromFile(FileName);
+
+				bool isLandscapeImage = image.Width > image.Height;
+				bool isLandscapeConfig = pd.DefaultPageSettings.Landscape;
+
+				if (isAutoPaperOrientation)
+				{
+					if (isLandscapeImage != isLandscapeConfig)
+					{
+						pd.DefaultPageSettings.Landscape = isLandscapeImage;
+					}
+				}
+				
+				pd.PrintPage += (sender, args) =>
+				{
+					//Adjust the size of the image to the page to print the full image without loosing any part of the image.
+					System.Drawing.Rectangle m = args.MarginBounds;
+
+					//Logic below maintains Aspect Ratio.
+					if ((double)image.Width / (double)image.Height > (double)m.Width / (double)m.Height) // image is wider
+					{
+						m.Height = (int)((double)image.Height / (double)image.Width * (double)m.Width);
+					}
+					else
+					{
+						m.Width = (int)((double)image.Width / (double)image.Height * (double)m.Height);
+					}
+
+					m.Y = (int)((((System.Drawing.Printing.PrintDocument)(sender)).DefaultPageSettings.Bounds.Height - m.Height) / 2);
+					m.X = (int)((((System.Drawing.Printing.PrintDocument)(sender)).DefaultPageSettings.Bounds.Width- m.Width) / 2);
+
+					args.Graphics.DrawImage(image, m);
+				};
+
+				pd.Print();
+			}
+			catch (Exception ex)
+			{
+			}
+			finally
+			{
+			}
 		}
 
 		private void PrintVisual(Visual v)
@@ -45,8 +120,9 @@ namespace Examples
 				System.Printing.PrintCapabilities capabilities = pd.PrintQueue.GetPrintCapabilities(pd.PrintTicket);
 
 				//get scale of the print wrt to screen of WPF visual
-				double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / e.ActualWidth, capabilities.PageImageableArea.ExtentHeight /
-							   e.ActualHeight);
+				double scale = Math.Min(
+					capabilities.PageImageableArea.ExtentWidth / e.ActualWidth, 
+					capabilities.PageImageableArea.ExtentHeight / e.ActualHeight);
 
 				//Transform the Visual to scale
 				e.LayoutTransform = new ScaleTransform(scale, scale);
@@ -79,13 +155,22 @@ namespace Examples
 			PrintDialog dialog = new PrintDialog();
 			if (dialog.ShowDialog() != true) return;
 
+			System.Printing.PrintCapabilities capabilities = dialog.PrintQueue.GetPrintCapabilities(dialog.PrintTicket);
+
 			StackPanel myPanel = new StackPanel();
 			myPanel.Margin = new Thickness(10);
 
 			Image myImage = new Image();
-			myImage.Width = 128;
+			myImage.Width = 1000;
+			myImage.Height = 1000;
 			myImage.Stretch = Stretch.Uniform;
 			myImage.Source = new BitmapImage(new Uri(txtImageFilePath.Text, UriKind.Absolute));
+
+			double scale = Math.Min(
+				capabilities.PageImageableArea.ExtentWidth / myImage.Width,
+				capabilities.PageImageableArea.ExtentHeight / myImage.Height);
+
+			myImage.LayoutTransform = new ScaleTransform(scale, scale);
 
 			myPanel.Children.Add(myImage);
 
@@ -95,8 +180,11 @@ namespace Examples
 
 			//myPanel.Children.Add(myBlock);
 
-			myPanel.Measure(new Size(dialog.PrintableAreaWidth, dialog.PrintableAreaHeight));
-			myPanel.Arrange(new Rect(new Point(0, 0), myPanel.DesiredSize));
+			//get the size of the printer page
+			System.Windows.Size sz = new System.Windows.Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+			myPanel.Measure(sz);
+			myPanel.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
 
 			dialog.PrintVisual(myPanel, "A Great Image.");
 		}
@@ -142,6 +230,7 @@ namespace Examples
 				txtImageFilePath.Text = openFileDialog.FileName;
 
 				ImageSource imageSource = new BitmapImage(new Uri(openFileDialog.FileName));
+				imgPrintImage.Stretch = Stretch.Uniform;
 				imgPrintImage.Source = imageSource;
 			}
 		}
