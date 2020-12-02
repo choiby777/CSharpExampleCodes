@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformExamples.fo_dicom;
 using WinformExamples.PythonTest;
 using WinformExamples.UsbCameraTest;
 
@@ -28,6 +29,12 @@ namespace WinformExamples
 		private void btnPythonTest_Click(object sender, EventArgs e)
 		{
 			PythonTestDlg dlg = new PythonTestDlg();
+			dlg.ShowDialog();
+		}
+
+		private void btnFoDiocom_Click(object sender, EventArgs e)
+		{
+			FoDicomDlg dlg = new FoDicomDlg();
 			dlg.ShowDialog();
 		}
 	}

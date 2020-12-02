@@ -30,6 +30,7 @@
 		{
 			this.btnUsbCamera = new System.Windows.Forms.Button();
 			this.btnPythonTest = new System.Windows.Forms.Button();
+			this.btnFoDiocom = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnUsbCamera
@@ -52,11 +53,22 @@
 			this.btnPythonTest.UseVisualStyleBackColor = true;
 			this.btnPythonTest.Click += new System.EventHandler(this.btnPythonTest_Click);
 			// 
+			// btnFoDiocom
+			// 
+			this.btnFoDiocom.Location = new System.Drawing.Point(232, 12);
+			this.btnFoDiocom.Name = "btnFoDiocom";
+			this.btnFoDiocom.Size = new System.Drawing.Size(104, 40);
+			this.btnFoDiocom.TabIndex = 2;
+			this.btnFoDiocom.Text = "fo-dicom";
+			this.btnFoDiocom.UseVisualStyleBackColor = true;
+			this.btnFoDiocom.Click += new System.EventHandler(this.btnFoDiocom_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(669, 550);
+			this.Controls.Add(this.btnFoDiocom);
 			this.Controls.Add(this.btnPythonTest);
 			this.Controls.Add(this.btnUsbCamera);
 			this.Name = "MainForm";
@@ -69,6 +81,7 @@
 
 		private System.Windows.Forms.Button btnUsbCamera;
 		private System.Windows.Forms.Button btnPythonTest;
+		private System.Windows.Forms.Button btnFoDiocom;
 	}
 }
 
