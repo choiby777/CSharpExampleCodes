@@ -42,50 +42,6 @@
 				<TextBlock x:Name="txbArea" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17.333"/>
 			</Grid>
 		</DataTemplate>
-		<Style x:Key="btnAccept" TargetType="{x:Type Button}">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type Button}">
-						<Grid x:Name="grid">
-							<Rectangle x:Name="rectangle" Margin="0" Stroke="#FF10131A" StrokeThickness="1" RadiusX="3" RadiusY="3" SnapsToDevicePixels="True" Fill="#FF434A64" Opacity="0"/>
-							<Path x:Name="모양" Data="F1M16.935,1.918C16.935,1.918 18.985,3.968 18.985,3.968 18.985,3.968 16.877,6.066 14.242,8.688L12.483,10.439 14.22,12.176C16.855,14.811 18.963,16.919 18.963,16.919 18.963,16.919 16.913,18.97 16.913,18.97 16.913,18.97 14.805,16.862 12.17,14.227L10.428,12.485 8.738,14.167C6.103,16.789 3.995,18.887 3.995,18.887 3.995,18.887 1.872,16.98 1.872,16.98 1.872,16.98 3.99,14.862 6.638,12.214L8.398,10.455 6.665,8.722C4.03,6.087 1.922,3.979 1.922,3.979 1.922,3.979 3.972,1.928 3.972,1.928 3.972,1.928 6.08,4.036 8.715,6.671L10.448,8.404 12.169,6.684C14.817,4.036,16.935,1.918,16.935,1.918z" Fill="#FF8A96B2" Height="20" Width="20" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
-						</Grid>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="True">
-								<Setter Property="Stroke" TargetName="rectangle" Value="#FFA3BEFF"/>
-								<Setter Property="Fill" TargetName="rectangle">
-									<Setter.Value>
-										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-											<GradientStop Color="#FF677FB8" Offset="0"/>
-											<GradientStop Color="#FF677FB8" Offset="1"/>
-										</LinearGradientBrush>
-									</Setter.Value>
-								</Setter>
-								<Setter Property="Fill" TargetName="모양" Value="#FFB4CBFF"/>
-								<Setter Property="Opacity" TargetName="rectangle" Value="0.5"/>
-							</Trigger>
-							<Trigger Property="IsPressed" Value="True">
-								<Setter Property="Stroke" TargetName="rectangle" Value="#FF6384CE"/>
-								<Setter Property="Fill" TargetName="rectangle">
-									<Setter.Value>
-										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-											<GradientStop Color="#FF4866AC" Offset="0.002"/>
-											<GradientStop Color="#FF4866AC" Offset="1"/>
-										</LinearGradientBrush>
-									</Setter.Value>
-								</Setter>
-								<Setter Property="Fill" TargetName="모양" Value="#FFEFF4FF"/>
-								<Setter Property="Opacity" TargetName="rectangle" Value="0.8"/>
-							</Trigger>
-							<Trigger Property="IsEnabled" Value="False">
-								<Setter Property="Opacity" TargetName="grid" Value="0.3"/>
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-			<Setter Property="Foreground" Value="White"/>
-		</Style>
 	</Window.Resources>
 	<Grid>
 		<Viewbox HorizontalAlignment="Center" Margin="60" VerticalAlignment="Center" Grid.Row="2">
