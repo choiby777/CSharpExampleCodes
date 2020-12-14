@@ -1,0 +1,106 @@
+﻿<Window x:Class="Examples.ContentTemplateTest"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Examples"
+		mc:Ignorable="d"
+		Width="1475" Height="956" AllowsTransparency="True" WindowStyle="None" Background="Black" FontFamily="Segoe UI" FontSize="18.667" FontWeight="SemiBold">
+	<Window.Resources>
+		<Style x:Key="chkImageBox" TargetType="{x:Type CheckBox}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type CheckBox}">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="40"/>
+							</Grid.RowDefinitions>
+							<ContentPresenter Grid.RowSpan="2" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="0" d:LayoutOverrides="GridBox"/>
+							<Rectangle x:Name="rectangle" Margin="0" Stroke="#FF303C58" SnapsToDevicePixels="True" StrokeThickness="2"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Stroke" TargetName="rectangle" Value="#FF1EDBFF"/>
+							</Trigger>
+							<Trigger Property="IsChecked" Value="True">
+								<Setter Property="Stroke" TargetName="rectangle" Value="#FFFFF158"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Foreground" Value="#FF3D4C6E"/>
+		</Style>
+		<DataTemplate x:Key="chkImageBoxData">
+			<Grid Margin="0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="40"/>
+				</Grid.RowDefinitions>
+				<Image x:Name="imgThumb" Margin="0"/>
+				<TextBlock x:Name="txbArea" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17.333"/>
+			</Grid>
+		</DataTemplate>
+		<Style x:Key="btnAccept" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid x:Name="grid">
+							<Rectangle x:Name="rectangle" Margin="0" Stroke="#FF10131A" StrokeThickness="1" RadiusX="3" RadiusY="3" SnapsToDevicePixels="True" Fill="#FF434A64" Opacity="0"/>
+							<Path x:Name="모양" Data="F1M16.935,1.918C16.935,1.918 18.985,3.968 18.985,3.968 18.985,3.968 16.877,6.066 14.242,8.688L12.483,10.439 14.22,12.176C16.855,14.811 18.963,16.919 18.963,16.919 18.963,16.919 16.913,18.97 16.913,18.97 16.913,18.97 14.805,16.862 12.17,14.227L10.428,12.485 8.738,14.167C6.103,16.789 3.995,18.887 3.995,18.887 3.995,18.887 1.872,16.98 1.872,16.98 1.872,16.98 3.99,14.862 6.638,12.214L8.398,10.455 6.665,8.722C4.03,6.087 1.922,3.979 1.922,3.979 1.922,3.979 3.972,1.928 3.972,1.928 3.972,1.928 6.08,4.036 8.715,6.671L10.448,8.404 12.169,6.684C14.817,4.036,16.935,1.918,16.935,1.918z" Fill="#FF8A96B2" Height="20" Width="20" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Stroke" TargetName="rectangle" Value="#FFA3BEFF"/>
+								<Setter Property="Fill" TargetName="rectangle">
+									<Setter.Value>
+										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+											<GradientStop Color="#FF677FB8" Offset="0"/>
+											<GradientStop Color="#FF677FB8" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="Fill" TargetName="모양" Value="#FFB4CBFF"/>
+								<Setter Property="Opacity" TargetName="rectangle" Value="0.5"/>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Stroke" TargetName="rectangle" Value="#FF6384CE"/>
+								<Setter Property="Fill" TargetName="rectangle">
+									<Setter.Value>
+										<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+											<GradientStop Color="#FF4866AC" Offset="0.002"/>
+											<GradientStop Color="#FF4866AC" Offset="1"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="Fill" TargetName="모양" Value="#FFEFF4FF"/>
+								<Setter Property="Opacity" TargetName="rectangle" Value="0.8"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Opacity" TargetName="grid" Value="0.3"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<Viewbox HorizontalAlignment="Center" Margin="60" VerticalAlignment="Center" Grid.Row="2">
+			<StackPanel Orientation="Vertical" Height="300" Width="1376">
+				<StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center">
+					<CheckBox x:Name="chkRUPremolars2" HorizontalAlignment="Left" Height="170" Margin="0,0,4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="190" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkRUPremolars1" Content="Premolars" HorizontalAlignment="Left" Height="170" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="190" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkRUCanine" Content="Canine" HorizontalAlignment="Left" Height="220" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="140" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkRUIncisors" Content="Incisors" HorizontalAlignment="Left" Height="220" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="140" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkLUIncisors" Content="Incisors" HorizontalAlignment="Left" Height="220" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="140" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkLUCanine" Content="Canine" HorizontalAlignment="Left" Height="220" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="140" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkLUPremolars1" Content="Premolars" HorizontalAlignment="Left" Height="170" Margin="4,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="190" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+					<CheckBox x:Name="chkLUPremolars2" Content="Premolars" HorizontalAlignment="Left" Height="170" Margin="4,0,0,0" Style="{DynamicResource chkImageBox}" VerticalAlignment="Bottom" Width="190" ContentTemplate="{DynamicResource chkImageBoxData}" Focusable="False"/>
+				</StackPanel>
+			</StackPanel>
+		</Viewbox>
+	</Grid>
+</Window>
