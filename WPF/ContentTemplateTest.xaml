@@ -16,8 +16,8 @@
 								<RowDefinition Height="*"/>
 								<RowDefinition Height="40"/>
 							</Grid.RowDefinitions>
+							<Rectangle x:Name="rectangle" Margin="0" Stroke="#FF303C58" SnapsToDevicePixels="True" StrokeThickness="2" Fill="Black"/>
 							<ContentPresenter Grid.RowSpan="2" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="0" d:LayoutOverrides="GridBox"/>
-							<Rectangle x:Name="rectangle" Margin="0" Stroke="#FF303C58" SnapsToDevicePixels="True" StrokeThickness="2"/>
 						</Grid>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
