@@ -38,7 +38,7 @@
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="40"/>
 				</Grid.RowDefinitions>
-				<Image x:Name="imgThumb" Margin="0"/>
+				<Image x:Name="imgThumb" Margin="3"/>
 				<TextBlock x:Name="txbArea" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17.333"/>
 			</Grid>
 		</DataTemplate>
