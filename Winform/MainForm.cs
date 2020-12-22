@@ -37,5 +37,11 @@ namespace WinformExamples
 			FoDicomDlg dlg = new FoDicomDlg();
 			dlg.ShowDialog();
 		}
+
+		private void btnUsbCamera2_Click(object sender, EventArgs e)
+		{
+			UsbCamera2TestDlg dlg = new UsbCamera2TestDlg();
+			dlg.ShowDialog();
+		}
 	}
 }

@@ -31,6 +31,7 @@
 			this.btnUsbCamera = new System.Windows.Forms.Button();
 			this.btnPythonTest = new System.Windows.Forms.Button();
 			this.btnFoDiocom = new System.Windows.Forms.Button();
+			this.btnUsbCamera2 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnUsbCamera
@@ -63,11 +64,22 @@
 			this.btnFoDiocom.UseVisualStyleBackColor = true;
 			this.btnFoDiocom.Click += new System.EventHandler(this.btnFoDiocom_Click);
 			// 
+			// btnUsbCamera2
+			// 
+			this.btnUsbCamera2.Location = new System.Drawing.Point(12, 58);
+			this.btnUsbCamera2.Name = "btnUsbCamera2";
+			this.btnUsbCamera2.Size = new System.Drawing.Size(104, 40);
+			this.btnUsbCamera2.TabIndex = 3;
+			this.btnUsbCamera2.Text = "Usb Camera (AForge)";
+			this.btnUsbCamera2.UseVisualStyleBackColor = true;
+			this.btnUsbCamera2.Click += new System.EventHandler(this.btnUsbCamera2_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(669, 550);
+			this.Controls.Add(this.btnUsbCamera2);
 			this.Controls.Add(this.btnFoDiocom);
 			this.Controls.Add(this.btnPythonTest);
 			this.Controls.Add(this.btnUsbCamera);
@@ -82,6 +94,7 @@
 		private System.Windows.Forms.Button btnUsbCamera;
 		private System.Windows.Forms.Button btnPythonTest;
 		private System.Windows.Forms.Button btnFoDiocom;
+		private System.Windows.Forms.Button btnUsbCamera2;
 	}
 }
 
