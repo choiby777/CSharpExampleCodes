@@ -1,21 +1,17 @@
-﻿using Extention;
+﻿using Extension;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace Utility
 {
 	public class Logger
 	{
-		enum _LOGLEVEL
+		enum LogLevel
 		{
 			DEBUG = 0,
 			INFO = 1,
@@ -24,11 +20,11 @@ namespace Utility
 		}
 
 		private static Logger instance;
-		private bool IsLoggerStop = false;
+		private bool isStop = false;
 		private JavaScriptSerializer jsonConvertor;
-		private ConcurrentQueue<LogData> LogDataQueue = null;
-		private string LogDirPath = null;
-		private Thread LogFileWriteThread = null;
+		private ConcurrentQueue<LogData> logDataQueue;
+		private string logDirPath;
+		private Thread logFileWriteThread;
 
 		private Logger(string logDir = null)
 		{
@@ -48,35 +44,35 @@ namespace Utility
 		{
 			if (instance == null) return;
 
-			instance.Write(_LOGLEVEL.DEBUG, instance.GetLogString(log, objects));
+			instance.Write(LogLevel.DEBUG, instance.GetLogString(log, objects));
 		}
 
 		public static void Error(string log, params object[] objects)
 		{
 			if (instance == null) return;
 
-			instance.Write(_LOGLEVEL.ERROR, instance.GetLogString(log, objects));
+			instance.Write(LogLevel.ERROR, instance.GetLogString(log, objects));
 		}
 
 		public static void Exception(Exception exception)
 		{
 			if (instance == null) return;
 
-			instance.Write(_LOGLEVEL.ERROR, exception.ToString());
+			instance.Write(LogLevel.ERROR, exception.ToString());
 		}
 
 		public static void Important(string log, params object[] objects)
 		{
 			if (instance == null) return;
 
-			instance.Write(_LOGLEVEL.INPORTANT, instance.GetLogString(log, objects));
+			instance.Write(LogLevel.INPORTANT, instance.GetLogString(log, objects));
 		}
 
 		public static void Infomation(string log, params object[] objects)
 		{
 			if (instance == null) return;
 
-			instance.Write(_LOGLEVEL.INFO, instance.GetLogString(log, objects));
+			instance.Write(LogLevel.INFO, instance.GetLogString(log, objects));
 		}
 
 		public static void InitInstance(string dirPath = null)
@@ -87,11 +83,11 @@ namespace Utility
 
 		public static void StopLogger()
 		{
-			instance.IsLoggerStop = true;
+			instance.isStop = true;
 
-			if (instance.LogFileWriteThread != null)
+			if (instance.logFileWriteThread != null)
 			{
-				instance.LogFileWriteThread = null;
+				instance.logFileWriteThread = null;
 			}
 		}
 
@@ -106,7 +102,7 @@ namespace Utility
 		{
 			try
 			{
-				string[] dirs = Directory.GetDirectories(LogDirPath);
+				string[] dirs = Directory.GetDirectories(logDirPath);
 
 				foreach (string dir in dirs)
 				{
@@ -138,10 +134,10 @@ namespace Utility
 
 		private string GetLogFilePath(LogData logdata)
 		{
-			FileUtil.CreateDirectorySafely(LogDirPath);
+			FileUtil.CreateDirectorySafely(logDirPath);
 
 			return string.Format("{0}\\{1}.log",
-								LogDirPath,
+								logDirPath,
 								logdata.GetDateString());
 		}
 
@@ -180,15 +176,15 @@ namespace Utility
 			{
 				Thread.Sleep(10);
 
-				if (IsLoggerStop) break;
+				if (isStop) break;
 
 				try
 				{
-					if (LogDataQueue.Count == 0) continue;
+					if (logDataQueue.Count == 0) continue;
 
 					LogData logdata = new LogData();
 
-					if (!LogDataQueue.TryDequeue(out logdata)) continue;
+					if (!logDataQueue.TryDequeue(out logdata)) continue;
 
 					WriteLogDataToFile(logdata);
 				}
@@ -201,32 +197,32 @@ namespace Utility
 
 		private void StartLogger(string logDir)
 		{
-			LogDirPath = logDir;
+			logDirPath = logDir;
 
-			if (Directory.Exists(LogDirPath) == false)
+			if (Directory.Exists(logDirPath) == false)
 			{
-				Directory.CreateDirectory(LogDirPath);
+				Directory.CreateDirectory(logDirPath);
 			}
 			else
 			{
 				DeleteOldLogFiles();
 			}
 
-			LogDataQueue = new ConcurrentQueue<LogData>();
+			logDataQueue = new ConcurrentQueue<LogData>();
 
-			if (LogFileWriteThread == null)
+			if (logFileWriteThread == null)
 			{
-				LogFileWriteThread = new Thread(LogFileWriteThreadProc);
-				LogFileWriteThread.IsBackground = true;
+				logFileWriteThread = new Thread(LogFileWriteThreadProc);
+				logFileWriteThread.IsBackground = true;
 			}
 
-			LogFileWriteThread.Start();
+			logFileWriteThread.Start();
 		}
 
-		private void Write(_LOGLEVEL nLevel, string strMessage)
+		private void Write(LogLevel nLevel, string strMessage)
 		{
 #if DEBUG
-			if (nLevel != _LOGLEVEL.DEBUG)
+			if (nLevel != LogLevel.DEBUG)
 			{
 				Trace(string.Format("[{0}] : {1}", nLevel, strMessage));
 			}
@@ -243,7 +239,7 @@ namespace Utility
 				logdata.ThreadID = Thread.CurrentThread.ManagedThreadId;
 				logdata.StackFrams = stackTrace.GetFrames();
 
-				LogDataQueue.Enqueue(logdata);
+				logDataQueue.Enqueue(logdata);
 			}
 			catch (Exception ex)
 			{
@@ -277,7 +273,7 @@ namespace Utility
 		private struct LogData
 		{
 
-			public _LOGLEVEL LogLevel { get; set; }
+			public LogLevel LogLevel { get; set; }
 			public DateTime LogTime { get; set; }
 			public string Message { get; set; }
 			public StackFrame[] StackFrams { get; set; }
@@ -354,7 +350,7 @@ namespace Utility
 				ThreadID = logdata.ThreadID;
 			}
 
-			public _LOGLEVEL LogLevel { get; set; }
+			public LogLevel LogLevel { get; set; }
 			public string LogTime { get; set; }
 			public int ThreadID { get; set; }
 			public string Message { get; set; }

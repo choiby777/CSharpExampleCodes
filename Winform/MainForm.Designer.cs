@@ -32,6 +32,7 @@
 			this.btnPythonTest = new System.Windows.Forms.Button();
 			this.btnFoDiocom = new System.Windows.Forms.Button();
 			this.btnUsbCamera2 = new System.Windows.Forms.Button();
+			this.btnRestSharp = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnUsbCamera
@@ -74,11 +75,22 @@
 			this.btnUsbCamera2.UseVisualStyleBackColor = true;
 			this.btnUsbCamera2.Click += new System.EventHandler(this.btnUsbCamera2_Click);
 			// 
+			// btnRestSharp
+			// 
+			this.btnRestSharp.Location = new System.Drawing.Point(342, 12);
+			this.btnRestSharp.Name = "btnRestSharp";
+			this.btnRestSharp.Size = new System.Drawing.Size(104, 40);
+			this.btnRestSharp.TabIndex = 4;
+			this.btnRestSharp.Text = "RestSharp";
+			this.btnRestSharp.UseVisualStyleBackColor = true;
+			this.btnRestSharp.Click += new System.EventHandler(this.btnRestSharp_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(669, 550);
+			this.Controls.Add(this.btnRestSharp);
 			this.Controls.Add(this.btnUsbCamera2);
 			this.Controls.Add(this.btnFoDiocom);
 			this.Controls.Add(this.btnPythonTest);
@@ -95,6 +107,7 @@
 		private System.Windows.Forms.Button btnPythonTest;
 		private System.Windows.Forms.Button btnFoDiocom;
 		private System.Windows.Forms.Button btnUsbCamera2;
+		private System.Windows.Forms.Button btnRestSharp;
 	}
 }
 

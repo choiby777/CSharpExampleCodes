@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Extension;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using Utility;
 using WinformExamples.fo_dicom;
 using WinformExamples.PythonTest;
+using WinformExamples.RestAPI;
 using WinformExamples.UsbCameraTest;
 
 namespace WinformExamples
@@ -22,11 +24,14 @@ namespace WinformExamples
 
 			Logger.InitInstance();
 			Logger.Debug("Test Log!!");
+
+			string test = "123456";
+			test = test.RemoveLastCharacter();
 		}
 
 		private void btnUsbCamera_Click(object sender, EventArgs e)
 		{
-			Logger.Infomation("Execute UsbCamera");
+			Logger.Infomation("Execute Function");
 
 			UsbCameraTestDlg dlg = new UsbCameraTestDlg();
 			dlg.ShowDialog();
@@ -47,6 +52,12 @@ namespace WinformExamples
 		private void btnUsbCamera2_Click(object sender, EventArgs e)
 		{
 			UsbCamera2TestDlg dlg = new UsbCamera2TestDlg();
+			dlg.ShowDialog();
+		}
+
+		private void btnRestSharp_Click(object sender, EventArgs e)
+		{
+			RestApiTestDlg dlg = new RestApiTestDlg();
 			dlg.ShowDialog();
 		}
 	}

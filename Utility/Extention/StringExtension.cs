@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Extention
+namespace Extension
 {
-	public static class StringExtention
+	public static class StringExtension
 	{
 		public static bool HasValue(this string source)
 		{
