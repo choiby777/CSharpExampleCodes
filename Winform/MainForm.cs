@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utility;
 using WinformExamples.fo_dicom;
 using WinformExamples.PythonTest;
 using WinformExamples.UsbCameraTest;
@@ -18,10 +19,15 @@ namespace WinformExamples
 		public MainForm()
 		{
 			InitializeComponent();
+
+			Logger.InitInstance();
+			Logger.Debug("Test Log!!");
 		}
 
 		private void btnUsbCamera_Click(object sender, EventArgs e)
 		{
+			Logger.Infomation("Execute UsbCamera");
+
 			UsbCameraTestDlg dlg = new UsbCameraTestDlg();
 			dlg.ShowDialog();
 		}
