@@ -26,6 +26,13 @@ namespace Examples
 
 			btnPrinterTest.Click += BtnPrinterTest_Click;
 			btnContentTemplateTest.Click += BtnContentTemplateTest_Click;
+			btnUiTest.Click += BtnUiTest_Click;
+		}
+
+		private void BtnUiTest_Click(object sender, RoutedEventArgs e)
+		{
+			UITest dlg = new UITest();
+			dlg.ShowDialog();
 		}
 
 		private void BtnContentTemplateTest_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,172 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BrushColor.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="recBgSearchPanel" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{DynamicResource colorBgSearchPanel}"/>
+    </Style>
+
+	<Style x:Key="recBg_SegSearch" TargetType="{x:Type Rectangle}">
+		<Setter Property="RadiusX" Value="20"/>
+		<Setter Property="RadiusY" Value="20"/>
+		<Setter Property="Fill" Value="{DynamicResource colorSeg_N}"/>
+		<Setter Property="Stroke" Value="{DynamicResource colorSegLine_N}"/>
+	</Style>
+
+	<Style x:Key="sgbSearchLeft" TargetType="{x:Type RadioButton}">
+		<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_N}"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<Border Name="bg" CornerRadius="20,0,0,20" Background="{DynamicResource colorTransparent}" >
+						<ContentPresenter x:Name="Mainlbl" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,4,0">
+							<ContentPresenter.ContentTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Content, ElementName=Mainlbl}" TextTrimming="CharacterEllipsis" />
+								</DataTemplate>
+							</ContentPresenter.ContentTemplate>
+						</ContentPresenter>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_H}"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+							<Setter Property="Margin" Value="0"/>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsChecked" Value="True"/>
+								<Condition Property="IsEnabled" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+							<Setter Property="Opacity" Value="0.4"/>
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="0.4"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="sgbSearchMiddle" TargetType="{x:Type RadioButton}">
+		<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_N}"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<Grid>
+						<Border Name="bg" Background="{DynamicResource colorTransparent}" BorderBrush="{DynamicResource colorSegLine_N}" BorderThickness="1,1,0,1"/>
+						<ContentPresenter x:Name="Mainlbl" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2,0" >
+							<ContentPresenter.ContentTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Content, ElementName=Mainlbl}" TextTrimming="CharacterEllipsis" />
+								</DataTemplate>
+							</ContentPresenter.ContentTemplate>
+						</ContentPresenter>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_H}"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsChecked" Value="True"/>
+								<Condition Property="IsEnabled" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+							<Setter Property="Opacity" Value="0.4"/>
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="0.4"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="sgbSearchRight" TargetType="{x:Type RadioButton}">
+		<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_N}"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<Border Name="bg" CornerRadius="0,20,20,0" Background="{DynamicResource colorTransparent}" BorderThickness="1" BorderBrush="{DynamicResource colorSegLine_N}" >
+						<ContentPresenter x:Name="Mainlbl" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4,0,8,0">
+							<ContentPresenter.ContentTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Content, ElementName=Mainlbl}" TextTrimming="CharacterEllipsis" />
+								</DataTemplate>
+							</ContentPresenter.ContentTemplate>
+						</ContentPresenter>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_H}"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsChecked" Value="True"/>
+								<Condition Property="IsEnabled" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="bg" Property="Background" Value="{DynamicResource colorSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderBrush" Value="{DynamicResource colorSegLine_S}"/>
+							<Setter Property="Foreground" Value="{DynamicResource colorLblSeg_S}"/>
+							<Setter TargetName="bg" Property="BorderThickness" Value="1"/>
+							<Setter Property="Opacity" Value="0.4"/>
+						</MultiTrigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="0.4"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

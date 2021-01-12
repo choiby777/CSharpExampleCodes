@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="colorBgSearchPanel" Color="#242323"/>
+    <SolidColorBrush x:Key="colorSeg_N" Color="#10ffffff"/>
+    <SolidColorBrush x:Key="colorSegLine_N" Color="#d8d8d8"/>
+    <SolidColorBrush x:Key="colorSeg_H" Color="#20ffffff"/>
+    <SolidColorBrush x:Key="colorSegLine_H" Color="#ffffff"/>
+    <SolidColorBrush x:Key="colorSeg_S" Color="#991B7B93"/>
+    <SolidColorBrush x:Key="colorSegLine_S" Color="#50d0f0"/>
+    <SolidColorBrush x:Key="colorSegProcedure_N" Color="#242424"/>
+    <SolidColorBrush x:Key="colorSegProcedureLine_N" Color="#939393"/>
+    <SolidColorBrush x:Key="colorSegProcedure_H" Color="#242424"/>
+    <SolidColorBrush x:Key="colorSegProcedureLine_H" Color="#61d7f4"/>
+    <SolidColorBrush x:Key="colorSegProcedure_S" Color="#131313"/>
+    <SolidColorBrush x:Key="colorSegProcedureLine_S" Color="#61d7f4"/>
+	<SolidColorBrush x:Key="colorTransparent" Color="#01000000"/>
+	<SolidColorBrush x:Key="colorLblBtn" Color="#ffffff"/>
+	<SolidColorBrush x:Key="colorLblSeg_N" Color="#d1d1d1"/>
+	<SolidColorBrush x:Key="colorLblSeg_S" Color="#ffffff"/>
+	<SolidColorBrush x:Key="colorLblSegProcedure" Color="#d1d1d1"/>
+	<SolidColorBrush x:Key="colorLblCmb_N" Color="#d1d1d1"/>
+	<SolidColorBrush x:Key="colorLblCmb_S" Color="#ffffff"/>
+</ResourceDictionary>

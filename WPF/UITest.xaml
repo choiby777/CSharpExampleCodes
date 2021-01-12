@@ -1,0 +1,32 @@
+﻿<Window x:Class="Examples.UITest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Examples"
+        mc:Ignorable="d"
+        Title="UITest" Height="324.466" Width="468.35">
+	
+	<Grid>
+		<Grid x:Name="grdQuickSearch" >
+			<Rectangle  Style="{DynamicResource recBgSearchPanel}"/>
+			<StackPanel x:Name="pnlQuickSearch" Margin="12" Orientation="Vertical">
+				<Grid x:Name="grdSegSearchPeriod" Height="40">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Rectangle Grid.ColumnSpan="5" Style="{DynamicResource recBg_SegSearch}"/>
+					<RadioButton x:Name="sgbPeriodToday" Uid="1" Grid.Column="0" Content="Today" Style="{DynamicResource sgbSearchLeft}"/>
+					<RadioButton x:Name="sgbPeriodYesterday" Uid="2" Grid.Column="1" Content="3 Days" Style="{DynamicResource sgbSearchMiddle}"/>
+					<RadioButton x:Name="sgbPeriodWeek" Uid="3" Grid.Column="2" Content="7 Days" Style="{DynamicResource sgbSearchMiddle}" />
+					<RadioButton x:Name="sgbPeriodMonth" Uid="4" Grid.Column="3" Content="1 Month" Style="{DynamicResource sgbSearchMiddle}"/>
+					<RadioButton x:Name="sgbPeriodAll" Uid="5" Grid.Column="4" Content="All" Style="{DynamicResource sgbSearchRight}"/>
+				</Grid>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Window>
