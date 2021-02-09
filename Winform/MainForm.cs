@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utility;
 using WinformExamples.fo_dicom;
+using WinformExamples.GUIControls;
 using WinformExamples.PythonTest;
 using WinformExamples.RestAPI;
 using WinformExamples.UsbCameraTest;
@@ -21,6 +22,8 @@ namespace WinformExamples
 		public MainForm()
 		{
 			InitializeComponent();
+
+			StartPosition = FormStartPosition.CenterScreen;
 
 			Logger.InitInstance();
 			Logger.Debug("Test Log!!");
@@ -58,6 +61,12 @@ namespace WinformExamples
 		private void btnRestSharp_Click(object sender, EventArgs e)
 		{
 			RestApiTestDlg dlg = new RestApiTestDlg();
+			dlg.ShowDialog();
+		}
+
+		private void btnGuiControls_Click(object sender, EventArgs e)
+		{
+			GUIControlsExample dlg = new GUIControlsExample();
 			dlg.ShowDialog();
 		}
 	}
