@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Examples
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private static readonly ILog logger = LogManager.GetLogger(typeof(App));
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			logger.Info("=============== MainWindow Created =============");
+			logger.Debug("Debug Log!!");
+			logger.Error("Error Log!!");
+			logger.Fatal("Fatal Log!!");
 
 			btnPrinterTest.Click += BtnPrinterTest_Click;
 			btnContentTemplateTest.Click += BtnContentTemplateTest_Click;
