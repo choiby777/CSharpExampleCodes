@@ -3,3 +3,13 @@ obj
 /.vs/Examples/v14/*.suo
 /packages
 /Setup/Release
+/CLRExample/Debug
+/CLRExample/x64/Debug
+/CLRUtilities/Debug
+/ipch/CLREXAMPLE-9b4640cb/*.ipch
+/Debug/*.pdb
+/x64/Debug
+/ipch/CLRUTILITIES-f18506b/*.ipch
+/Debug
+/Examples.VC.VC.opendb
+/Examples.VC.db

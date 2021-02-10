@@ -203,6 +203,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CLRExample\CLRExample.vcxproj">
+      <Project>{d7fabe55-2692-4958-a49f-18fcf2699a3b}</Project>
+      <Name>CLRExample</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{E442AD26-BDE1-4DFB-BE3D-C1E4665CA830}</Project>
       <Name>Utility</Name>

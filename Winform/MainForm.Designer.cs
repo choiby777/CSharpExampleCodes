@@ -34,6 +34,7 @@
 			this.btnUsbCamera2 = new System.Windows.Forms.Button();
 			this.btnRestSharp = new System.Windows.Forms.Button();
 			this.btnGuiControls = new System.Windows.Forms.Button();
+			this.btnCLRTest = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnUsbCamera
@@ -96,11 +97,22 @@
 			this.btnGuiControls.UseVisualStyleBackColor = true;
 			this.btnGuiControls.Click += new System.EventHandler(this.btnGuiControls_Click);
 			// 
+			// btnCLRTest
+			// 
+			this.btnCLRTest.Location = new System.Drawing.Point(232, 58);
+			this.btnCLRTest.Name = "btnCLRTest";
+			this.btnCLRTest.Size = new System.Drawing.Size(104, 40);
+			this.btnCLRTest.TabIndex = 6;
+			this.btnCLRTest.Text = "CLR Test";
+			this.btnCLRTest.UseVisualStyleBackColor = true;
+			this.btnCLRTest.Click += new System.EventHandler(this.btnCLRTest_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(669, 550);
+			this.Controls.Add(this.btnCLRTest);
 			this.Controls.Add(this.btnGuiControls);
 			this.Controls.Add(this.btnRestSharp);
 			this.Controls.Add(this.btnUsbCamera2);
@@ -121,6 +133,7 @@
 		private System.Windows.Forms.Button btnUsbCamera2;
 		private System.Windows.Forms.Button btnRestSharp;
 		private System.Windows.Forms.Button btnGuiControls;
+		private System.Windows.Forms.Button btnCLRTest;
 	}
 }
 
