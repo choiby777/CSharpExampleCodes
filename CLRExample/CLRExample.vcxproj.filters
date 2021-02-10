@@ -16,7 +16,7 @@
     <Filter Include="Native">
       <UniqueIdentifier>{cfcf71e2-cd1d-4509-8fcd-fa349be5bd8f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manage">
+    <Filter Include="Managed">
       <UniqueIdentifier>{e2ecf0bf-8317-4088-ab56-88c76981790a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -31,7 +31,7 @@
       <Filter>Native</Filter>
     </ClInclude>
     <ClInclude Include="CLRUtil.h">
-      <Filter>Manage</Filter>
+      <Filter>Managed</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
       <Filter>Native</Filter>
     </ClCompile>
     <ClCompile Include="CLRUtil.cpp">
-      <Filter>Manage</Filter>
+      <Filter>Managed</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
