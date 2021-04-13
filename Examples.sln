@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleInstaller", "Example
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLRExample", "CLRExample\CLRExample.vcxproj", "{D7FABE55-2692-4958-A49F-18FCF2699A3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPattern", "DesignPattern\DesignPattern.csproj", "{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,18 @@ Global
 		{D7FABE55-2692-4958-A49F-18FCF2699A3B}.Release|x64.Build.0 = Release|x64
 		{D7FABE55-2692-4958-A49F-18FCF2699A3B}.Release|x86.ActiveCfg = Release|Win32
 		{D7FABE55-2692-4958-A49F-18FCF2699A3B}.Release|x86.Build.0 = Release|Win32
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|x64.Build.0 = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|x64.ActiveCfg = Release|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|x64.Build.0 = Release|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{F56599BD-2ED7-4D8F-9654-71F12CF6DAB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
